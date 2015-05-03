@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="col-md-3 todolist">
+    <!-- <h2>To Do List</h2> -->
+    <!-- <textarea name="todolist">todolist</textarea> -->
+  </div>
+
+  <div class="col-md-6 editmge">
+    <%= form_for @message, :url => messages_path do |m| %>
+      <h2><%= m.label :content, 'Leave Your Message' %></h2>
+      <!-- 寬度不應該寫死 -->
+      <%= m.text_area :content, size: '74x8' %>
+    <% end %>
+    <div class="btn-group btn-group-md pull-right " role="group" aria-label="...">
+      <%= link_to 'Submit', messages_path, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', messages_path, :data =>{:confirm => "r u sure?"}, :class => 'btn btn-danger' %>
+    </div>
+    <div>Receiver: </div>
+  </div>
+
+  <div class="col-md-3 contectlist">
+    <h2>Contect List</h2>
+
+  </div>
+
+</div>
