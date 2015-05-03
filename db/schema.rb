@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503100716) do
+ActiveRecord::Schema.define(version: 20150503112948) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "phone",      null: false
+    t.integer  "home_phone"
+    t.string   "email"
+    t.string   "address"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id",                         null: false
@@ -21,6 +34,17 @@ ActiveRecord::Schema.define(version: 20150503100716) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
+
+  create_table "receivers", force: :cascade do |t|
+    t.integer  "message_id",                 null: false
+    t.integer  "contact_id",                 null: false
+    t.boolean  "is_contact", default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id"
+  add_index "receivers", ["message_id"], name: "index_receivers_on_message_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
