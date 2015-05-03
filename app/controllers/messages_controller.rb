@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 before_action :authenticate_user!
 
   def index
-    @messages = Message.all
+    @messages = Message.all.order("id DESC")
     @message = Message.new
   end
 
@@ -10,4 +10,20 @@ before_action :authenticate_user!
     @message = Message.new
   end
 
+  def create
+    @message = Message.new(mge_params)
+    @message.user = current_user
+    if @message.save
+      flash[:notice] = "message was successfully created!!"
+      redirect_to messages_path
+    else
+      render :action => :new
+    end
+  end
+
+private
+
+  def mge_params
+    params.require(:message).permit(:content, :delivery_date, :user_id, :status)
+  end
 end
