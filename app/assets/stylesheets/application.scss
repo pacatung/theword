@@ -1,6 +1,15 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
+body{
+  background-color: #B6D47E;
+}
+.btn-add-contact{
+  width: 100%;
+}
+.contact-list{
+  background-color: #fff;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

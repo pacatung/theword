@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20150503112948) do
   end
 
   create_table "receivers", force: :cascade do |t|
-    t.integer  "message_id"
-    t.integer  "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "message_id",                 null: false
+    t.integer  "contact_id",                 null: false
+    t.boolean  "is_contact", default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id"
