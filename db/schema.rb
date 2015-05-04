@@ -14,58 +14,58 @@
 ActiveRecord::Schema.define(version: 20150503112948) do
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "phone",      null: false
-    t.integer  "home_phone"
-    t.string   "email"
-    t.string   "address"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255, null: false
+    t.integer  "phone",      limit: 4,   null: false
+    t.integer  "home_phone", limit: 4
+    t.string   "email",      limit: 255
+    t.string   "address",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "user_id",                         null: false
-    t.text     "content"
+    t.integer  "user_id",       limit: 4,                       null: false
+    t.text     "content",       limit: 65535
     t.date     "delivery_date"
-    t.string   "status",        default: "final", null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "status",        limit: 255,   default: "final", null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "receivers", force: :cascade do |t|
-    t.integer  "message_id",                 null: false
-    t.integer  "contact_id",                 null: false
-    t.boolean  "is_contact", default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "message_id", limit: 4,                 null: false
+    t.integer  "contact_id", limit: 4,                 null: false
+    t.boolean  "is_contact", limit: 1, default: false, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
-  add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id"
-  add_index "receivers", ["message_id"], name: "index_receivers_on_message_id"
+  add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id", using: :btree
+  add_index "receivers", ["message_id"], name: "index_receivers_on_message_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "image"
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "image",                  limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
