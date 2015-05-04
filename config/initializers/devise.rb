@@ -7,7 +7,7 @@ Devise.setup do |config|
   # config.secret_key = '12629f6db5aa99411e5ce22ffc678ed45e1f8aaa950c7c88a65929ad5eb538e580f3cce6e45a102926eb1080387354453abc12088d8dba4dd11157b1f813fba5'
 
   # FB ID & Secret
-  config.omniauth :facebook, "1576127389342352", "c2eb8b05f012238b7693fa015c7ada9f"
+  config.omniauth :facebook, config.facebook.app_id , config.facebook.app_password
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
