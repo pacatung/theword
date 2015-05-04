@@ -1,4 +1,5 @@
-'ssh-add' # need this to make key-forwarding work
+'ssh-add'
+# need this to make key-forwarding work
 
 # config valid only for current version of Capistrano
 lock '3.4.0'
