@@ -1,4 +1,5 @@
-'ssh-add'
+`ssh-add`
+
 # need this to make key-forwarding work
 
 # config valid only for current version of Capistrano
@@ -38,6 +39,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+
+set :passenger_restart_command, "touch #{deploy_to}/current/tmp/restart.txt"
+set :passenger_restart_options, ''
 
 namespace :deploy do
 
