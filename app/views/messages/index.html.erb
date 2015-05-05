@@ -21,8 +21,9 @@
   <div class="col-md-3 contact-list">
     <h2>Contact List</h2>
     <ul>
-      <li>faker name</li>
-      <li>faker name</li>
+      <% @contacts.each do |c| %>
+        <li><%= link_to c.name, c %> <%= link_to "X", c, :method => :delete %></li>
+      <% end %>
     </ul>
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
   </div>

@@ -1,0 +1,11 @@
+
+<%= form_for @contact do |f| %>
+  <ul>
+    <li><%= f.text_field :name, :value => @contact.name %></li>
+    <li><%= f.text_field :phone, :value => @contact.phone %></li>
+    <li><%= f.text_field :home_phone, :value => @contact.home_phone %></li>
+    <li><%= f.text_field :email, :value => @contact.email %></li>
+    <li><%= f.text_field :address, :value => @contact.address %></li>
+  </ul>
+  <%= f.submit "更新聯絡人資料" %>
+<% end %>

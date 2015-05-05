@@ -4,6 +4,7 @@ before_action :authenticate_user!
   def index
     @messages = Message.all.order("id DESC")
     @message = Message.new
+    @contacts = current_user.contacts
   end
 
   def new

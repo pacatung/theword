@@ -1,0 +1,11 @@
+
+<%= form_for @contact do |f| %>
+  <ul>
+    <li><%= f.text_field :name, :placeholder => "(必填) 姓名" %></li>
+    <li><%= f.text_field :phone, :placeholder => "(必填) 行動電話" %></li>
+    <li><%= f.text_field :home_phone, :placeholder => "室內電話 / 行動電話2" %></li>
+    <li><%= f.text_field :email, :placeholder => "(必填) Email" %></li>
+    <li><%= f.text_field :address, :placeholder => "地址" %></li>
+  </ul>
+  <%= f.submit "新增聯絡人" %>
+<% end %>
