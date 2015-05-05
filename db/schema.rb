@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503112948) do
+ActiveRecord::Schema.define(version: 20150505025130) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
-    t.integer  "phone",      limit: 4,   null: false
-    t.integer  "home_phone", limit: 4
+    t.string   "phone",      limit: 255, null: false
+    t.string   "home_phone", limit: 255
     t.string   "email",      limit: 255
     t.string   "address",    limit: 255
     t.integer  "user_id",    limit: 4
@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20150503112948) do
   end
 
   create_table "receivers", force: :cascade do |t|
-    t.integer  "message_id", limit: 4,                 null: false
-    t.integer  "contact_id", limit: 4,                 null: false
-    t.boolean  "is_contact", limit: 1, default: false, null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "message_id",     limit: 4,                 null: false
+    t.integer  "contact_id",     limit: 4,                 null: false
+    t.string   "receiver_class", limit: 255, default: "0", null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id", using: :btree
