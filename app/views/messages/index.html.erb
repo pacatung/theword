@@ -16,6 +16,12 @@
 
     </div>
     <div>Receiver: </div>
+
+    <% @messages.each do |m| %>
+      <p><%= m.content %></p>
+      <p></p>
+    <% end %>
+
   </div>
 
   <div class="col-md-3 contact-list">
@@ -29,6 +35,9 @@
   </div>
 
 </div>
+
+
+
 
 <% if false %>
 <h1>new html</h1>
