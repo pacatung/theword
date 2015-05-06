@@ -22,6 +22,25 @@ before_action :authenticate_user!
     end
   end
 
+  def show
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+
+    redirect_to messages_path
+  end
+
 private
 
   def mge_params

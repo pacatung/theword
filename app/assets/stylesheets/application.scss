@@ -10,6 +10,7 @@ body{
 .contact-list{
   background-color: #fff;
 }
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -26,6 +27,6 @@ body{
  *= require_self
  */
 
-.editmge, .todolist, .contectlist{
-  outline:1px solid #0ef225;
+.mge-txt, .todolist, .contect-list{
+  outline:1px solid #red;
 }
