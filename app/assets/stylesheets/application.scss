@@ -10,9 +10,11 @@ body{
 .contact-list{
   background-color: #fff;
 }
-
 textarea{
   resize: none;
+}
+.mge-txt-area, .todolist, .contact-list, .mge{
+  outline:1px solid #red;
 }
 
 /*
@@ -31,6 +33,3 @@ textarea{
  *= require_self
  */
 
-.mge-txt, .todolist, .contect-list{
-  outline:1px solid #red;
-}
