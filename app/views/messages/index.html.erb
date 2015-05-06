@@ -10,7 +10,7 @@
       <%= form_for @message, :url => messages_path do |m| %>
         <legend>新增一則遺言</legend>
         <!-- 寬度不應該寫死 -->
-        Receiver:
+        <%= m.label :user_id, '收件人' %>
         <%= m.text_area :user_id, size: '74x2' %>
         <%= m.text_area :content, size: '74x8' %>
         <div class="pull-right">
@@ -30,7 +30,7 @@
 
 
       <% @messages.each do |m| %>
-      <div class="mge-show mge-<%= m.id %>">
+      <div class="mge-show" id="mge-<%= m.id %>">
         <div class="pull-right">
           <%= link_to 'Edit', edit_message_url(m) %>
           <%#= link_to 'X', message_path(message), :data =>{:confirm => "r u sure?"}, :method => :delete %>
