@@ -29,6 +29,7 @@ gem 'paperclip'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'omniauth-facebook'
+gem "select2-rails"
 
 #deploy
 gem 'capistrano-rails', :group => :development
