@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
+    before_action :set_my_photo, :only => [:edit, :update, :destroy]
 
   def index
     @messages = Message.all.order("id DESC")
@@ -23,6 +24,8 @@ before_action :authenticate_user!
   end
 
   def show
+    @message = Message.find(params[:id])
+
 
   end
 
@@ -31,7 +34,17 @@ before_action :authenticate_user!
   end
 
   def update
+    if @message.update(mge_params)
+      flash[:notice] = "Messsage was successfully updated."
+      redirect_to messages_path
+    else
+      render :action => :edit
+    end
 
+    respond_to do |format|
+      format.html{ redirect_to root_url }
+      format.js{ render :template => "messages/update" }
+    end
   end
 
   def destroy
@@ -45,5 +58,8 @@ private
 
   def mge_params
     params.require(:message).permit(:content, :delivery_date, :user_id, :status)
+  end
+  def set_my_message
+    @message = current_user.messages.find(params[:id])
   end
 end

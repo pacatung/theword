@@ -2,7 +2,7 @@
 @import "bootstrap-sprockets";
 
 body{
-  background-color: #B6D47E;
+  background-color: #B2B2CC ;
 }
 .btn-add-contact{
   width: 100%;
@@ -14,11 +14,15 @@ textarea{
   resize: none;
 }
 .mge-txt-area, .todolist, .contact-list, .mge{
-  outline:1px solid #red;
+  outline:1px solid #FF0000;
+}
+.mge-show{
+  margin: 10px,0px, 10px, 0px;
+  background-color: #fff ;
 }
 
-.mge{
-  background-color:#yellow ;
+footer{
+  text-align: center;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
