@@ -15,6 +15,9 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(mge_params)
     @message.user = current_user
+    # @message.receivers = params[]
+    Rails.logger.info("----------------")
+    Rails.logger.info(params)
     if @message.save
       flash[:notice] = "message was successfully created!!"
       redirect_to messages_path
@@ -25,8 +28,6 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
-
-
   end
 
   def edit
