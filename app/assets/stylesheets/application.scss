@@ -14,15 +14,21 @@ body{
 textarea{
   resize: none;
 }
-.mge-txt-area, .todolist, .contact-list, .mge{
-  outline:1px solid #red;
+
+.outline-show{
+  outline:1px solid #FF0000;
+}
+.mge-show{
+  margin: 10px,0px, 10px, 0px;
+  background-color: #fff ;
 }
 .dropdown-toggle{
   padding: 0px !important;
   margin-right: 15px;
 }
-.mge{
-  background-color:#yellow ;
+
+footer{
+  text-align: center;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

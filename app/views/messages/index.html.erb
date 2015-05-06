@@ -6,30 +6,42 @@
   </div>
 
   <div class="col-md-6">
-
-    <div class="mge-txt-area">
+    <div class="mge-txt-area outline-show">
       <%= form_for @message, :url => messages_path do |m| %>
         <legend>新增一則遺言</legend>
         <!-- 寬度不應該寫死 -->
         Receiver:
         <%= m.text_area :user_id, size: '74x2' %>
         <%= m.text_area :content, size: '74x8' %>
-        <%= m.submit "submit", :class => 'btn btn-primary' %>
-      <% end %>
-    </div>
-    <div class="mge">
-      <% @messages.each do |message| %>
-        <%= message.content %>
-        <div class="edit-delete-mge pull-right">
-          <%= link_to 'Edit', edit_message_url(message) %>
-          <%#= link_to 'X', message_path(message), :data =>{:confirm => "r u sure?"}, :method => :delete %>
-          <%= link_to 'X', message_path(message), :method => :delete %>
+        <div class="pull-right">
+          <%= m.submit "Submit", :class => 'btn btn-primary' %>
+          <%= link_to "Cancle", Message, :class => 'btn btn-danger' %>
         </div>
-      <br>
-      <div>
-              </div>
       <% end %>
     </div>
+
+<% if false %>
+    <div class="form-group">
+      <%= m.label :pic, "Upload File" %>
+      <%= m.file_field :pic %>
+      <%= check_box_tag "destroy_file", "1" %> 刪除檔案
+    </div>
+<% end %>
+
+
+      <% @messages.each do |m| %>
+      <div class="mge-show mge-<%= m.id %>">
+        <div class="pull-right">
+          <%= link_to 'Edit', edit_message_url(m) %>
+          <%#= link_to 'X', message_path(message), :data =>{:confirm => "r u sure?"}, :method => :delete %>
+          <%= link_to 'X', message_path(m), :method => :delete %>
+          <%= m.created_at.to_s(:short) %>
+        </div>
+        <%=simple_format m.content %>
+      </div>
+
+      <% end %>
+
   </div>
 
   <!-- Contact List -->
