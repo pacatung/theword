@@ -9,7 +9,7 @@
 
     <div class="mge-txt-area">
       <%= form_for @message, :url => messages_path do |m| %>
-        <h2><%= m.label :content, 'Leave Your Message' %></h2>
+        <legend>新增一則遺言</legend>
         <!-- 寬度不應該寫死 -->
         Receiver:
         <%= m.text_area :user_id, size: '74x2' %>
@@ -32,21 +32,18 @@
     </div>
   </div>
 
+  <!-- Contact List -->
   <div class="col-md-3 contact-list">
-    <h2>Contact List</h2>
-    <ul>
+    <legend class="text-center">聯絡人設定</legend>
+
       <% @contacts.each do |c| %>
-        <li><%= link_to c.name, c %> <%= link_to "X", c, :method => :delete %></li>
+        <%= link_to c.name, c, :class => "col-md-10" %>
+        <%= link_to "x", c, :method => :delete, :class => "col-md-2 contact-delete" %>
       <% end %>
-    </ul>
+
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
   </div>
 </div>
-
-  <footer>
-  <hr>
-    ©
-  </footer>
 
 
 <% if false %>
