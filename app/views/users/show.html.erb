@@ -1,0 +1,23 @@
+<div class="col-md-6 col-md-push-3">
+  <%= form_for @user do |f|%>
+  <div class="form-group">
+    <%= f.label "真實姓名" %> <br>
+    <%= f.text_field :name, :value => @user.name, :class => "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email" %> <br>
+    <%= f.text_field :email, :value => @user.email, :type => "email", :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "室內電話" %> <br>
+    <%= f.text_field :home_phone, :value => @user.home_phone, :class => "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label "地址" %> <br>
+    <%= f.text_field :address, :value => @user.address, :class => "form-control"  %>
+  </div>
+
+
+    <%= f.submit "更新個人資料", :class => "btn btn-default" %>
+  <% end %>
+</div>
