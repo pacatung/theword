@@ -4,8 +4,21 @@
     <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :id => "receivers-select", :class=> "col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
-    <p>指定傳送日期：</p>
-    <%= m.text_field :delivery_date, :class => "datepicker" %>
+<% if false %>
+    <div class="form-group">
+      <%= f.label :pic, "Upload File" %>
+      <%= f.file_field :pic %>
+      <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
+    </div>
+<% end %>
+    指定傳送日期：
+    <%#= m.text_field :delivery_date, :class => "datepicker" %>
+    <div class='input-group date'>
+      <%= m.text_field :delivery_date, :class => 'form-control datepicker',default: DateTime.current, id:"datetimepicker1"%>
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
     <div class="pull-right">
       <%= m.submit "草稿", :class => 'btn btn-primary', :status => "draft" %>
       <%= m.submit "完成", :class => 'btn btn-primary', :status => "OK" %>
@@ -14,6 +27,12 @@
 </div>
 
 <script>
+
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm a'
+                });
+            });
   $('.datepicker').datepicker({
      format: "yyyy/mm/dd"
   });

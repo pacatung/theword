@@ -31,7 +31,11 @@ gem 'bootstrap-sass'
 gem 'omniauth-facebook'
 gem "select2-rails"
 
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'
+
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 
 #deploy
 group :development do

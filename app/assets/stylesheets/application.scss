@@ -2,7 +2,7 @@
 @import "bootstrap-sprockets";
 @import "select2";
 @import "select2-bootstrap";
-@import "bootstrap-datepicker3";
+@import 'bootstrap-datetimepicker';
 
 /* html */
 body{
@@ -52,6 +52,7 @@ footer{
   display: inline-block;
   border: 1px #f00 solid;
   border-radius: 3px;
+  background-color: #f00;
 }
 
 /* other */
