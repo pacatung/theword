@@ -34,10 +34,11 @@ gem "select2-rails"
 gem 'bootstrap-datepicker-rails'
 
 #deploy
-gem 'capistrano-rails', :group => :development
-gem 'capistrano-passenger', :group => :development
-
-
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem "letter_opener"
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
