@@ -1,0 +1,2 @@
+$("#mge-<%= @message.id %>").append("<%= j(render :partial => "edit_ajax", :locals => { :content => @message.content } ) %>");
+$("#new_comment").trigger("reset");

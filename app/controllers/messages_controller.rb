@@ -29,11 +29,10 @@ class MessagesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @message.update(mge_params)
+
     # if @message.update(mge_params)
     #   flash[:notice] = "Messsage was successfully updated."
     #   redirect_to messages_path
@@ -42,13 +41,18 @@ class MessagesController < ApplicationController
     # end
 
     respond_to do |format|
-      format.html{ redirect_to root_url }
-      format.js{ render :template => "messages/update" }
+      if @message.update(mge_params)
+        format.html{ redirect_to root_url }
+        format.js{ render :template => "messages/edit" }
+      else
+        format.html { render :template => "messages/show" }
+        format.js
+      end
     end
   end
 
   def destroy
-    # @message = Message.find(params[:id])
+   # @message = Message.find(params[:id])
     @message.destroy
 
     # redirect_to messages_path
