@@ -1,4 +1,4 @@
 class Receiver < ActiveRecord::Base
   belongs_to :contact
-  has_many :messages
+  belongs_to :message
 end

@@ -15,14 +15,12 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(mge_params)
     @message.user = current_user
-    # @message.receivers = params[]
-    Rails.logger.info("----------------")
-    Rails.logger.info(params)
+
     if @message.save
       flash[:notice] = "message was successfully created!!"
       redirect_to messages_path
     else
-      render :action => :new
+      render :back
     end
   end
 
@@ -58,9 +56,10 @@ class MessagesController < ApplicationController
 private
 
   def mge_params
-    params.require(:message).permit(:content, :delivery_date, :user_id, :status)
+    params.require(:message).permit(:content, :delivery_date, :user_id, :status, :contact_ids => [])
   end
   def set_my_message
     @message = current_user.messages.find(params[:id])
   end
+
 end
