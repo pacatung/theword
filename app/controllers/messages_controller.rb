@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-    before_action :set_my_photo, :only => [:edit, :update, :destroy]
+  before_action :set_my_message, :only => [:edit, :update, :destroy]
 
   def index
     @messages = Message.all.order("id DESC")
@@ -47,10 +47,15 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id])
+    # @message = Message.find(params[:id])
     @message.destroy
 
-    redirect_to messages_path
+    # redirect_to messages_path
+    respond_to do |format|
+      format.html{ redirect_to root_url }
+      format.js{ render :template => "messages/destroy" }
+    end
+
   end
 
 private

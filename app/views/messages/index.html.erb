@@ -4,8 +4,10 @@
   </div>
 
   <div class="col-md-6">
+
     <%= render :partial => "edit", :locals => { :message => @message } %>
     <p></p>
+
 
 
     <!-- Message show -->
@@ -13,14 +15,29 @@
       <div class="mge-show mge-<%= m.id %>">
 
         <div class="pull-right">
-          <%= link_to 'Edit', edit_message_url(m) %>
-          <%#= link_to 'X', message_path(message), :data =>{:confirm => "r u sure?"}, :method => :delete %>
-          <%= link_to 'X', message_path(m), :method => :delete %>
           <%= m.created_at.to_s(:short) %>
+
+          <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">修改遺言</a></li>
+                <li><a href="<%= message_path(@messages) %>">刪除遺言</a></li>
+              </ul>
+            </div>
+
+          <%= link_to 'Edit', edit_message_url(m) %>
+          <%= link_to 'X', message_path(m), :data =>{:confirm => "r u sure?"}, :method => :delete %>
+          <%= link_to 'X', message_path(m), :method => :delete, :remote => true %>
         </div>
+
         <p>給: <%= m.receivers.all.map{ |r| r.contact.name}.to_s %></p>
+        <legend></legend>
         <p><%=simple_format m.content %></p>
         <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
+
       </div>
 
     <% end %>

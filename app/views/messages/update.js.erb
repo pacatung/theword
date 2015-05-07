@@ -1,4 +1,4 @@
-$("#mge-show-<%= @message.id %> ul").append("<li id='<%= @comment.id %>'><%= j(render :partial => "comment", :locals => { :photo => @photo, :comment => @comment } ) %></li>");
+$("#mge-<%= @message.id %> ul").append("<%= j(render :partial => "message", :locals => { :content => @message.content } ) %>");
 // $("#photo-comments-<%= @photo.id %> ul").append("<li><%= j(render :partial => "comment", :locals => { :photo => @photo, :comment => @comment } ) %></li>");
 $("#new_comment").trigger("reset");
 
