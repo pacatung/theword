@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506080535) do
+ActiveRecord::Schema.define(version: 20150507013049) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150506080535) do
     t.string   "receiver_class", limit: 255, default: "0", null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "relationship",   limit: 255
   end
 
   add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id", using: :btree
