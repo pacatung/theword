@@ -5,10 +5,16 @@
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
 
     <%= m.text_area :content, :class=> "form-control message-input-area", placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
-    <h2>[datepicker]</h2>
+    <%= m.text_field :delivery_date, :class => "datepicker" %>
     <div class="pull-right">
       <%= m.submit "草稿", :class => 'btn btn-primary', :status => "draft" %>
       <%= m.submit "完成", :class => 'btn btn-primary', :status => "OK" %>
     </div>
   <% end %>
 </div>
+
+<script>
+  $('.datepicker').datepicker({
+     format: "yyyy/mm/dd"
+  });
+</script>

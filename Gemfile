@@ -31,6 +31,8 @@ gem 'bootstrap-sass'
 gem 'omniauth-facebook'
 gem "select2-rails"
 
+gem 'bootstrap-datepicker-rails'
+
 #deploy
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
