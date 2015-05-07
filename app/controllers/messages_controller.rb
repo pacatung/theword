@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       flash[:notice] = "message was successfully created!!"
+      @message.create_message_notify
       redirect_to messages_path
     else
       render :back

@@ -18,3 +18,4 @@
 
 /config/facebook.yml
 /config/secrets.yml
+/config/email.yml
