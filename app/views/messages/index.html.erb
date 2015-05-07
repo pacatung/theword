@@ -18,7 +18,7 @@
 
     <!-- Message show -->
     <% @messages.each do |m| %>
-      <div class="mge-show mge-<%= m.id %>">
+      <div class="mge-show" id="mge-<%= m.id %>">
 
         <div class="pull-right">
           <%= m.created_at.to_s(:short) %>
@@ -29,13 +29,12 @@
                  <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">修改遺言</a></li>
-                <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete %></li>
+                <li><%= link_to '修改遺言', edit_message_url(m) %></li>
+                <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
               </ul>
             </div>
 
           <%= link_to 'Edit', edit_message_url(m) %>
-          <%= link_to 'X', message_path(m), :data =>{:confirm => "r u sure?"}, :method => :delete %>
           <%= link_to 'X', message_path(m), :method => :delete, :remote => true %>
         </div>
 

@@ -33,12 +33,13 @@ class MessagesController < ApplicationController
   end
 
   def update
-    if @message.update(mge_params)
-      flash[:notice] = "Messsage was successfully updated."
-      redirect_to messages_path
-    else
-      render :action => :edit
-    end
+    @message.update(mge_params)
+    # if @message.update(mge_params)
+    #   flash[:notice] = "Messsage was successfully updated."
+    #   redirect_to messages_path
+    # else
+    #   render :action => :edit
+    # end
 
     respond_to do |format|
       format.html{ redirect_to root_url }
