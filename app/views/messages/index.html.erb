@@ -8,6 +8,12 @@
     <%= render :partial => "edit", :locals => { :message => @message } %>
     <p></p>
 
+    draft do{
+      partial: "edit"
+    }
+    final do{
+      partial: "show"
+    }
 
 
     <!-- Message show -->
@@ -24,7 +30,7 @@
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">修改遺言</a></li>
-                <li><a href="<%= message_path(@messages) %>">刪除遺言</a></li>
+                <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete %></li>
               </ul>
             </div>
 
