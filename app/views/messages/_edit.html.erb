@@ -1,0 +1,14 @@
+<div class="message-new mge-show clearfix">
+      <%= form_for @message, :url => messages_path do |m| %>
+        <legend class="text-center">新增一則遺言</legend>
+
+        <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :id => "receivers-select", :class=> "col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
+        <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
+
+        <%= m.text_area :content, :class=> "form-control message-input-area", placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
+        <div class="pull-right">
+          <%= m.submit "草稿", :class => 'btn btn-primary', :status => "draft" %>
+          <%= m.submit "完成", :class => 'btn btn-primary', :status => "OK" %>
+        </div>
+      <% end %>
+    </div>

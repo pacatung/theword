@@ -4,20 +4,9 @@
   </div>
 
   <div class="col-md-6">
-    <div class="message-new mge-show clearfix">
-      <%= form_for @message, :url => messages_path do |m| %>
-        <legend class="text-center">新增一則遺言</legend>
+    <%= render :partial => "edit", :locals => { :message => @message } %>
+    <p></p>
 
-        <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :id => "receivers-select", :class=> "col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
-        <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
-
-        <%= m.text_area :content, :class=> "form-control", placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^", row: :"10" %>
-        <div class="pull-right">
-          <%= m.submit "草稿", :class => 'btn btn-primary', :status => "draft" %>
-          <%= m.submit "完成", :class => 'btn btn-primary', :status => "OK" %>
-        </div>
-      <% end %>
-    </div>
 
     <!-- Message show -->
     <% @messages.each do |m| %>
@@ -29,8 +18,9 @@
           <%= link_to 'X', message_path(m), :method => :delete %>
           <%= m.created_at.to_s(:short) %>
         </div>
-        給: <%= m.receivers.all.map{ |r| r.contact.name}.to_s %>
-        <%=simple_format m.content %>
+        <p>給: <%= m.receivers.all.map{ |r| r.contact.name}.to_s %></p>
+        <p><%=simple_format m.content %></p>
+        <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
       </div>
 
     <% end %>
