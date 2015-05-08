@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all.order("id DESC")
     @message = Message.new
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.only_check_alive
   end
 
   def new
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(mge_params)
+    @message = Message.new(message_params)
     @message.user = current_user
 
     if @message.save
@@ -34,29 +34,21 @@ class MessagesController < ApplicationController
 
   def update
 
-    # if @message.update(mge_params)
-    #   flash[:notice] = "Messsage was successfully updated."
-    #   redirect_to messages_path
-    # else
-    #   render :action => :edit
-    # end
-
     respond_to do |format|
-      if @message.update(mge_params)
+      if @message.update(message_params)
         format.html{ redirect_to root_url }
         format.js{ render :template => "messages/edit" }
       else
-        format.html { render :template => "messages/show" }
+        format.html { render :template => "messages/index" }
         format.js
       end
     end
+
   end
 
   def destroy
-   # @message = Message.find(params[:id])
     @message.destroy
 
-    # redirect_to messages_path
     respond_to do |format|
       format.html{ redirect_to root_url }
       format.js{ render :template => "messages/destroy" }
@@ -64,9 +56,9 @@ class MessagesController < ApplicationController
 
   end
 
-private
+  private
 
-  def mge_params
+  def message_params
     params.require(:message).permit(:content, :delivery_date, :user_id, :status, :contact_ids => [])
   end
   def set_my_message

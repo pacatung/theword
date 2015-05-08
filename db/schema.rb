@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507013049) do
+ActiveRecord::Schema.define(version: 20150508025449) do
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.string   "phone",      limit: 255, null: false
-    t.string   "home_phone", limit: 255
-    t.string   "email",      limit: 255
-    t.string   "address",    limit: 255
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",                     limit: 255,                null: false
+    t.string   "phone",                    limit: 255,                null: false
+    t.string   "home_phone",               limit: 255
+    t.string   "email",                    limit: 255
+    t.string   "address",                  limit: 255
+    t.integer  "user_id",                  limit: 4
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "relationship",             limit: 255
+    t.string   "relationship_color_class", limit: 255
+    t.boolean  "check_alive",              limit: 1,   default: true
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
@@ -36,12 +39,10 @@ ActiveRecord::Schema.define(version: 20150507013049) do
   end
 
   create_table "receivers", force: :cascade do |t|
-    t.integer  "message_id",     limit: 4,                 null: false
-    t.integer  "contact_id",     limit: 4,                 null: false
-    t.string   "receiver_class", limit: 255, default: "0", null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "relationship",   limit: 255
+    t.integer  "message_id", limit: 4, null: false
+    t.integer  "contact_id", limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "receivers", ["contact_id"], name: "index_receivers_on_contact_id", using: :btree
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150507013049) do
     t.string   "address",                limit: 255
     t.date     "active_date"
     t.string   "status",                 limit: 255
+    t.string   "fb_token",               limit: 255
+    t.datetime "fb_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
