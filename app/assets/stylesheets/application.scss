@@ -30,12 +30,19 @@ footer{
 .message-new, .mge-show{
   padding: 10px;
   margin-bottom: 20px;
+  box-shadow: 1px 1px 1px 1px #c0c0c0;
+  border-radius: 5px;
 }
 .btn-add-contact{
   width: 100%;
 }
-.contact-list{
+.contact-list,
+.receiver-list
+{
   background-color: #fff;
+  box-shadow: 1px 1px 1px 1px #c0c0c0;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .outline-show{

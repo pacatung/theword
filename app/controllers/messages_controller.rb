@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_my_message, :only => [:edit, :update, :destroy]
 
   def index
-    @messages = Message.all.order("id DESC")
+    @messages = current_user.messages.order("id DESC")
     @message = Message.new
     @contacts = current_user.contacts.only_check_alive
   end
