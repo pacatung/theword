@@ -64,7 +64,7 @@
       <p>當我們無法與您聯繫時，將聯絡以下對象</p>
       <% @contacts.each do |c| %>
         <%= link_to c.name, c, :class => "col-md-10" %>
-        <%= link_to "x", c, :method => :delete, :class => "col-md-2 contact-delete" %>
+        <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
       <% end %>
 
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
