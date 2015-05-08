@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :contacts
-  has_many :messages
+  has_many :contacts, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
 
 
   def self.from_omniauth(auth)
