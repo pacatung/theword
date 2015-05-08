@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-push-3">
-  <%= form_for @user do |f|%>
+  <%= form_for @user, :url => update_profile_path do |f|%>
   <div class="form-group">
     <%= f.label "真實姓名" %> <br>
     <%= f.text_field :name, :value => @user.name, :class => "form-control"  %>

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   #user profile edit , update
-  resources :users
+  # resources :users
+  get "/profile" => "users#show", :as => "profile"
+  patch "/profile" => "users#update", :as => "update_profile"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
