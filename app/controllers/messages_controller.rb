@@ -37,9 +37,9 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.update(message_params)
         format.html{ redirect_to root_url }
-        format.js{ render :template => "messages/edit" }
+        format.js{ render :template => "messages/index" }
       else
-        format.html { render :template => "messages/index" }
+        format.html { render :template => "messages/edit" }
         format.js
       end
     end

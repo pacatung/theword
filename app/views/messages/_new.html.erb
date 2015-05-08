@@ -1,17 +1,16 @@
 <div class="message-new mge-show clearfix">
-  <%= form_for message, :url => message_path(message) do |m| %>
-    <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2" %>
+  <%= form_for @message, :url => messages_path do |m| %>
+    <legend class="text-center">新增一則遺言</legend>
+    <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
-    <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, :value=> message.content %>
-
-    <% if false %>
-        <div class="form-group">
-          <%= f.label :pic, "Upload File" %>
-          <%= f.file_field :pic %>
-          <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
-        </div>
-    <% end %>
-
+    <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
+<% if false %>
+    <div class="form-group">
+      <%= f.label :pic, "Upload File" %>
+      <%= f.file_field :pic %>
+      <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
+    </div>
+<% end %>
     指定傳送日期：
     <%#= m.text_field :delivery_date, :class => "datepicker" %>
     <div class='input-group date'>
@@ -21,8 +20,8 @@
       </span>
     </div>
     <div class="pull-right">
-      <%= link_to "取消", messages_path, :class => 'btn btn-primary', :status => "draft", data: {confirm: '確定取消編輯嗎？'} %>
-      <%= m.submit "完成編輯", :class => 'btn btn-primary', :status => "OK" %>
+      <%= m.submit "草稿", :class => 'btn btn-primary', :status => "draft" %>
+      <%= m.submit "完成", :class => 'btn btn-primary', :status => "OK" %>
     </div>
   <% end %>
 </div>

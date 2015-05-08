@@ -18,11 +18,31 @@
 <br>
 <%= link_to 'back to index', photos_path %>
 <% end %>
+
+
 <% end %>
 
 
 <% if false %>
 
+  $("#edit-mge-<%= m.id %>").click(function(){
+    $( "#mge-<%= m.id %>" ).toggle(
+      <%= form_for @messages, :url => edit_message_url(m) %>
+      );
+  });
 
        <!-- <li><a href="<%= message_path(m), :method => :delete %>">刪除</a></li> -->
+$(".editmessage").first().closest(".mge-show").find(".mge-content").toggle()
+[<div class=​"mge-content" style=​"display:​ none;​">​…​</div>​]
+$(".editmessage").first().closest(".mge-show").find(".mge-edit-form").toggle()
+[<div class=​"mge-edit-form" style=​"display:​ block;​">​
+          YOUR FORM
+        ​</div>​]
+
+  $("#editmessage").click(function(){
+    $this.parent().parent().parent().toggle();
+  });
+
+
+
 <% end %>

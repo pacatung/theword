@@ -4,44 +4,43 @@
   </div>
 
   <div class="col-md-6">
-
-
-      <%= render :partial => "edit", :locals => { :message => @message } %>
-
+      <%= render :partial => "new", :locals => { :message => @message } %>
     <p></p>
-
 
     <!-- Message show -->
     <% @messages.each do |m| %>
-      <div class="mge-show" id="mge-<%= m.id %>">
+      <div class="mge-show outline-show-red" id="mge-<%= m.id %>">
         <div class="pull-right">
           <%= m.created_at.to_s(:short) %>
           <!-- Single button -->
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                 <span class="caret"></span>
+                <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to '修改遺言', edit_message_url(m), remote: true %></li>
+                <li><a href="#" class="editmessage" data-id="<%= m.id %>">修改遺言</a></li>
+                <li><%= link_to '修改遺言ajax', edit_message_url(m), remote: true %></li>
                 <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
               </ul>
             </div>
         </div>
+        <div class="mge-content">
+          <!-- <p>給: <%#= m.receivers.all.map{ |r| r.contact.name}.to_s %></p> -->
+          給：
+          <% m.receivers.all.each_with_index do |receiver, index| %>
+            <li class="receiver-name receiver-<%= index %>"><%= receiver.contact.name %></li>
+          <% end %>
 
-        <!-- <p>給: <%#= m.receivers.all.map{ |r| r.contact.name}.to_s %></p> -->
-        給：
-        <% m.receivers.all.each_with_index do |receiver, index| %>
-          <li class="receiver-name receiver-<%= index %>"><%= receiver.contact.name %></li>
-        <% end %>
-
-        <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
-        <legend></legend>
-        <p><%=simple_format m.content %></p>
-
-
+          <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
+          <legend></legend>
+          <p><%=simple_format m.content %></p>
+        </div>
+      </div>
+      <!-- message edit -->
+      <div class="mge-edit-form outline-show-green" id="edit-mge-<%= m.id %>" data-id="<%= m.id %>">
+          <%= render :partial => "edit", :locals => { :message => m } %>
       </div>
     <% end %>
-
   </div>
 
   <!-- Contact List -->
@@ -57,9 +56,19 @@
   </div>
 </div>
 
-
 <script>
+  //$(".editmessage").first().closest(".mge-show").find(".mge-edit-form").toggle()
+  $(".mge-edit-form").hide();
+  $(".editmessage").on("click", function(event) {
+    event.preventDefault();
+
+    id = $(this).data("id");
+    //console.log("get data-id="+id);
+
+    $("#mge-"+id).toggle();
+    $("#edit-mge-"+id).toggle();
+  });
 
   $(".receivers-select").select2();
-
 </script>
+
