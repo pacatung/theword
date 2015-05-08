@@ -9,7 +9,7 @@
 
     <!-- Message show -->
     <% @messages.each do |m| %>
-      <div class="mge-show outline-show-red" id="mge-<%= m.id %>">
+      <div class="mge-show" id="mge-<%= m.id %>">
         <div class="pull-right">
           <%= m.created_at.to_s(:short) %>
           <!-- Single button -->
@@ -30,14 +30,17 @@
           <% m.receivers.all.each_with_index do |receiver, index| %>
             <li class="receiver-name receiver-<%= index %>"><%= receiver.contact.name %></li>
           <% end %>
-
           <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
           <legend></legend>
+
+          <% if m.image_file_name %>
+          <%= image_tag m.image.url(:medium) %>
+          <% end %>
           <p><%=simple_format m.content %></p>
         </div>
       </div>
       <!-- message edit -->
-      <div class="mge-edit-form outline-show-green" id="edit-mge-<%= m.id %>" data-id="<%= m.id %>">
+      <div class="mge-edit-form" id="edit-mge-<%= m.id %>" data-id="<%= m.id %>">
           <%= render :partial => "edit", :locals => { :message => m } %>
       </div>
     <% end %>

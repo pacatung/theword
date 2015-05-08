@@ -4,13 +4,11 @@
     <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
-<% if false %>
     <div class="form-group">
-      <%= f.label :pic, "Upload File" %>
-      <%= f.file_field :pic %>
+      <%= m.label :image, "上傳相片", class: 'inline-block'%>
+      <%= m.file_field :image, class: 'inline' %>
       <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
     </div>
-<% end %>
     指定傳送日期：
     <%#= m.text_field :delivery_date, :class => "datepicker" %>
     <div class='input-group date'>
