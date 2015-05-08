@@ -15,7 +15,9 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
-
+    if params["commit"] == "草稿"
+      @message.status = "draft"
+    end
     if @message.save
       flash[:notice] = "message was successfully created!!"
       @message.create_message_notify
