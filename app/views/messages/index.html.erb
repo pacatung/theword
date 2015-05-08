@@ -43,6 +43,19 @@
     <% end %>
   </div>
 
+  <!-- Receiver List -->
+  <div class="col-md-3 receiver-list">
+    <legend class="text-center">收訊人列表</legend>
+      <p>您目前留了遺言給以下對象</p>
+      <ul>
+      <% @contacts.each do |c| %>
+        <% if c.receivers.first %>
+          <li><%= c.name %></li>
+        <% end %>
+      <% end %>
+      </ul>
+  </div>
+
   <!-- Contact List -->
   <div class="col-md-3 contact-list">
     <legend class="text-center">聯絡人設定</legend>
@@ -54,6 +67,7 @@
 
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
   </div>
+
 </div>
 
 <script>
