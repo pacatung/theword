@@ -5,8 +5,8 @@
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
     <div class="form-group">
-      <%= m.label :image, "上傳相片", class: 'inline-block'%>
-      <%= m.file_field :image, class: 'inline' %>
+      <%= m.label '上傳相片：',class: 'inline-block' %>
+      <%= m.file_field :image, class: 'inline-block' %>
       <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
     </div>
     指定傳送日期：

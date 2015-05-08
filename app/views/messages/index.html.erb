@@ -32,9 +32,8 @@
           <% end %>
           <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
           <legend></legend>
-
           <% if m.image_file_name %>
-          <%= image_tag m.image.url(:medium) %>
+            <%= image_tag m.image.url(:medium) %>
           <% end %>
           <p><%=simple_format m.content %></p>
         </div>
