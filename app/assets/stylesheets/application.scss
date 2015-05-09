@@ -36,6 +36,7 @@ footer{
 .btn-add-contact{
   width: 100%;
 }
+.theword-sample,
 .contact-list,
 .receiver-list
 {
@@ -60,10 +61,10 @@ footer{
 }
 .receiver-name {
   display: inline-block;
-  border: 1px #00ccff solid;
+  border: 1px #ccc solid;
   border-radius: 3px;
-  background-color: #00ccff;
-  padding:0px 4px 0px 4px;
+  background-color: #f0f0f0;
+
 }
 
 /* other */

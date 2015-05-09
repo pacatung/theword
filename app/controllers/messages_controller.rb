@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
-    if params["commit"] == "草稿"
+    if params["commit"] == "草稿" || @message.receivers.first == nil
       @message.status = "draft"
     end
     if @message.save
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
       @message.create_message_notify
       redirect_to messages_path
     else
-      render :back
+      redirect_to :back
     end
   end
 

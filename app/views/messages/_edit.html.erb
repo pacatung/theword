@@ -1,4 +1,4 @@
-<div class="message-new mge-show clearfix">
+<div class="message-new mge-show clearfix mge-edit-form", id="edit-mge-<%= message.id %>">
   <%= form_for message, :url => message_path(message) do |m| %>
     <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2" %>
     <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
@@ -21,7 +21,7 @@
       </span>
     </div>
     <div class="pull-right">
-      <%= link_to "取消", messages_path, :class => 'btn btn-primary', :status => "draft", data: {confirm: '確定取消編輯嗎？'} %>
+      <%= link_to "取消", messages_path, :class => 'btn btn-primary', :status => "draft" %>
       <%= m.submit "完成編輯", :class => 'btn btn-primary', :status => "OK" %>
     </div>
   <% end %>
