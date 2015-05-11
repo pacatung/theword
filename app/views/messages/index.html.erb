@@ -2,7 +2,7 @@
 
   <!-- 遺言範例 -->
   <div class="col-md-3 theword-sample">
-    <legend class="text-center">遺言範例</legend>
+    <legend class="text-center">看看其他人說什麼</legend>
     <p>給親愛的媽媽:</p>
     <p>  這是我在前往亞馬遜河探險前所寫下的，當妳看到這封訊息時，表示我已經不在了... 兒子不孝，沒能好好奉養妳，還讓妳傷心。但此行是我一大心願，雖然危險卻非去不可，能長眠於此，也是我最好的歸宿了~!!</p>
 
@@ -29,7 +29,7 @@
 
   <!-- Receiver List -->
   <div class="col-md-3 receiver-list">
-    <legend class="text-center">收訊人列表</legend>
+    <legend class="text-center">收訊人</legend>
       <p>您目前留了遺言給以下對象</p>
       <ul>
       <% @contacts.each do |c| %>
@@ -40,7 +40,7 @@
 
   <!-- Contact List -->
   <div class="col-md-3 contact-list">
-    <legend class="text-center">聯絡人設定</legend>
+    <legend class="text-center">聯絡人</legend>
       <p>當我們無法與您聯繫時，將聯絡以下對象</p>
       <% @contacts.each do |c| %>
         <%= link_to c.name, c, :class => "col-md-10" %>

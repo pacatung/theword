@@ -6,8 +6,8 @@
 
 /* html */
 body{
-  background-color: #FFF2EB;
-  padding-top: 70px;
+  background-color: #f5faff;
+  padding-top: 50px;
 }
 .sign_in_page{
   background: image-url("sign_in_family3.jpg") no-repeat center center;
@@ -38,7 +38,9 @@ textarea{
 footer{
   text-align: center;
 }
-
+.mge-content-info{
+  /*background-color: #d1ffff;*/
+}
 
 /* class */
 .message-input-area{
@@ -84,10 +86,13 @@ footer{
 }
 .receiver-name {
   display: inline-block;
-  border: 1px #ccc solid;
+  border: 1px #4dffff solid;
   border-radius: 3px;
-  background-color: #f0f0f0;
-
+  background-color: #4dffff;
+  padding: 0px 5px;
+}
+nav{
+  margin-bottom: 20px;
 }
 
 /* other */
