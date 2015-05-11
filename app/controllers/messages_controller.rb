@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
   end
 
   def update
+    @message.status = "draft" if @message.receivers.first == nil
 
     respond_to do |format|
       if @message.update(message_params)
