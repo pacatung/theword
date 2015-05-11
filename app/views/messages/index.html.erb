@@ -10,7 +10,8 @@
 
 
   <div class="col-md-6">
-      <%= render :partial => "new", :locals => { :message => @message } %>
+    <!-- Message new -->
+    <%= render :partial => "new", :locals => { :message => @message } %>
     <p></p>
 
 
@@ -32,9 +33,9 @@
     <legend class="text-center">收訊人</legend>
       <p>您目前留了遺言給以下對象</p>
       <ul>
-      <% @contacts.each do |c| %>
-        <% c.name if c.receivers.first %>
-      <% end %>
+        <% @contacts.each do |c| %>
+          <p><%= c.name if c.receivers.first %></p>
+        <% end %>
       </ul>
   </div>
 
