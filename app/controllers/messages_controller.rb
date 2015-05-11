@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     @messages = current_user.messages.order("id DESC")
     @message = Message.new
     @contacts = current_user.contacts.only_check_alive
+    @contact = Contact.new
   end
 
   def new

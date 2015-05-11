@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/profile" => "users#show", :as => "profile"
   patch "/profile" => "users#update", :as => "update_profile"
 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
