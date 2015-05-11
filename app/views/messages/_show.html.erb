@@ -1,6 +1,6 @@
 
 <div class="mge-show">
-  <p><%= "草稿" if m.status == "draft" %></p>
+  <p class="draft-style"><%= "草稿" if m.status == "draft" %></p>
   <div class="pull-right">
     <%= m.created_at.to_s(:short) %>
     <!-- Single button -->
