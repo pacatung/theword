@@ -1,7 +1,12 @@
 <div class="message-new mge-show clearfix">
   <%= form_for @message, :url => messages_path do |m| %>
     <legend class="text-center">新增一則遺言</legend>
-    <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
+
+    <%#= m.select :contact_ids, options_for_receiver, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
+
+
+    <%= select_tag "message[contact_ids]", grouped_options_for_select(options_for_receiver(current_user), m.object.contact_ids ), :multiple => true, :class=> "receivers-select col-md-9 receivers-s2", :placeholder => "收訊人: 媽媽" %>
+
     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"> + </button>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
     <div class="form-group">

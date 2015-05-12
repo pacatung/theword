@@ -28,7 +28,7 @@ class UserMailer < ApplicationMailer
   def send_theword(message,receiver)
     @message = message
     @receiver = receiver
-    mail to: @receiver.contact.email, subject: "theWord #{@user.name}給你留了一封訊息"
+    mail to: @receiver.contact.email, subject: "theWord #{@message.user.name}給你留了一封訊息"
   end
 
 end
