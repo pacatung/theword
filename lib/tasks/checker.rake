@@ -25,15 +25,14 @@ namespace :checker do
   task :send_theword => :environment do
     u = User.first
     if u.status == "die"
-      u.messages.each do |m|
-        if m.status == "final"
-          m.receivers.each do |r|
-            UserMailer.send_theword(m,r).deliver_now!
-          end
+
+      u.messages.where( :status => "final").each do |m|
+        m.receivers.each do |r|
+          UserMailer.send_theword(m,r).deliver_now!
         end
       end
-    end
 
+    end
   end
 
 end
