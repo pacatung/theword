@@ -9,6 +9,10 @@ body{
   background-color: #FFF2EB;
   padding-top: 70px;
 }
+nav{
+  margin-bottom:550px;
+  outline:1px solid #00ff00;
+}
 .draft-style{
   background-color: #fbb;
   text-align: center;
@@ -29,6 +33,7 @@ body{
   /*vertical-align: middle;*/
   /*background-color:#fff ;*/
   margin-top: 100px;
+  color: #7F7F7F;
 }
 .fb-signin{
   /*left: 170px;*/
@@ -93,7 +98,6 @@ footer{
   border: 1px #ccc solid;
   border-radius: 3px;
   background-color: #f0f0f0;
-
 }
 
 /* other */
