@@ -13,6 +13,9 @@ nav{
   margin-bottom:550px;
   outline:1px solid #00ff00;
 }
+.fb-root{
+  margin-left: 0px;
+}
 .draft-style{
   background-color: #fbb;
   text-align: center;
@@ -60,6 +63,10 @@ footer{
 }
 .receivers-s2{
   padding: 0px;
+  width: 70%;
+}
+.receiver-add{
+  width: 28%;
 }
 .message-new, .mge-show{
   padding: 10px;

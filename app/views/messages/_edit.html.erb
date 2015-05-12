@@ -2,7 +2,7 @@
   <legend>修改遺言</legend>
   <%= form_for message, :url => message_path(message) do |m| %>
     <%= m.select :contact_ids, current_user.contacts.all.map{ |c| [c.name, c.id] }, {}, :multiple => true, :class=> "receivers-select col-md-9 receivers-s2" %>
-    <%= m.submit "新增收訊人", :status => "draft", :class => "new-receiver-button col-md-3 btn btn-default" %>
+    <%= m.submit "新增收訊人", :status => "draft", :class => "btn btn-default receiver-add" %>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, :value=> message.content %>
     <div class="form-group">
       <%= m.label '上傳檔案：',class: 'inline-block' %>
@@ -10,7 +10,7 @@
       <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
     </div>
     指定傳送日期：
-    <%#= m.text_field :delivery_date, :class => "datepicker" %>
+
     <div class='input-group date'>
       <%= m.text_field :delivery_date, :class => 'form-control datepicker',default: DateTime.current, id:"datetimepicker1"%>
       <span class="input-group-addon">
