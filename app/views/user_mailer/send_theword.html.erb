@@ -1,4 +1,4 @@
-
-<p><%= @message.user.name %> 留給您的訊息如下</p>
+<p>Dear <%= @receiver.contact.name %> </p>
+<p><%= @message.user.name %> 在<%= @message.updated_at %>留給您的訊息如下</p>
 <p><%= @message.content %></p>
-<p><%= image_tag m.image.url(:medium) %></p>
+<p><%= image_tag @message.image.url(:medium) if @message.image.url %></p>
