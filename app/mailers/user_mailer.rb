@@ -13,16 +13,24 @@ class UserMailer < ApplicationMailer
   end
 
   def ask_contacts(user)
+    puts "123"
     @user = user
-    mail_list = user.contacts.map{|c|
-      c.email if c.check_alive
+    # @ask = AskAlive.create!( :user => user, :contact => contact )
+
+    user.contacts.where(:check_alive => true).each { |c|
+      @ask = AskAlive.create(:user_id => @user.id, :contact_id => c.id)
+      mail to: c.email, subject: "theWord 請問#{@user.name}最近如何呢?"
+      puts c.email
     }
-    mail to: mail_list, subject: "theWord 請問#{@user.name}最近如何呢?"
+
   end
 
   def ask_user(user)
+    puts "123"
     @user = user
+    @ask = AskAlive.create(:user_id => @user.id)
     mail to: user.email, subject: "theWord #{@user.name}你最近如何呢?"
+    puts @user.email
   end
 
   def send_theword(message,receiver)

@@ -1,3 +1,4 @@
 <%= @user.name %>, 我們很久沒收到你的消息
 最近好嗎??
-1.很好
+<%= link_to "很好", ask_alive_url( :token => @ask.token, :status => "alive" ) %>
+<%= link_to "當天使去了", ask_alive_url( :token => @ask.token, :status => "dead" ) %>

@@ -13,13 +13,12 @@ namespace :checker do
 
   task :ask_alive => :environment do
 
-    u = User.first
+    User.where( [ "active_date < ?" , Date.today ] ).each { |u|
 
-    if u.active_date < (Date.today - 1)
-      UserMailer.ask_user(u).deliver_now!
-      UserMailer.ask_contacts(u).deliver_now!
-    end
+        UserMailer.ask_user(u).deliver_now!
+        UserMailer.ask_contacts(u).deliver_now!
 
+    }
   end
 
   task :send_theword => :environment do
