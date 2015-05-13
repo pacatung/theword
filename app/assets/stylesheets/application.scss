@@ -9,10 +9,6 @@ body{
   background-color: #FFF2EB;
   padding-top: 70px;
 }
-nav{
-  margin-bottom:550px;
-  outline:1px solid #00ff00;
-}
 .draft-style{
   background-color: #fbb;
   text-align: center;
@@ -20,6 +16,8 @@ nav{
   width: 10%;
 }
 .sign_in_page{
+
+  margin-top: -20px;
   background: image-url("sign_in_family3.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;

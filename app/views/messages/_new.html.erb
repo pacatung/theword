@@ -9,10 +9,11 @@
 
     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"> + </button>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
+    <br>
     <div class="form-group">
-      <%= m.label '上傳檔案：',class: 'inline-block' %>
-      <%= m.file_field :image, class: 'inline-block' %>
-      <%= check_box_tag "destroy_photo", "1" %> 刪除檔案
+
+      上傳檔案：<%= m.file_field :image, class: 'inline-block' %>
+      <!-- <%#= check_box_tag "destroy_photo", "1" %> 刪除檔案 -->
     </div>
     指定傳送日期：
     <%#= m.text_field :delivery_date, :class => "datepicker" %>
