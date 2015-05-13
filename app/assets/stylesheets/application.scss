@@ -9,6 +9,7 @@ body{
   background-color: #FFF2EB;
   padding-top: 70px;
 }
+
 .draft-style{
   background-color: #fbb;
   text-align: center;
@@ -58,6 +59,10 @@ footer{
 }
 .receivers-s2{
   padding: 0px;
+  width: 70%;
+}
+.receiver-add{
+  width: 28%;
 }
 .message-new, .mge-show{
   padding: 10px;

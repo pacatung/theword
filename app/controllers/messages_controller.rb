@@ -36,7 +36,11 @@ class MessagesController < ApplicationController
   end
 
   def update
-    @message.status = "draft" if @message.receivers.first == nil
+    if params["commit"] == "草稿"
+      @message.status = "draft"
+    else
+      @message.status = "final"
+    end
 
     respond_to do |format|
       if @message.update(message_params)
@@ -63,6 +67,8 @@ class MessagesController < ApplicationController
   private
 
   def message_params
+    params[:message][:contact_ids] = Array(params[:message][:contact_ids])
+
     params.require(:message).permit( :content, :delivery_date, :user_id, :status, :image, :contact_ids => [])
   end
   def set_my_message
