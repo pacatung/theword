@@ -17,7 +17,7 @@
   <div class="mge-content">
     <div class="mge-content-info">
       給：
-      <% m.receivers.all.each_with_index do |receiver, index| %>
+      <% m.receivers.all.includes(:contact).each_with_index do |receiver, index| %>
         <li class="receiver-name receiver-<%= index %>"><%= receiver.contact.name %></li>
       <% end %>
       <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
