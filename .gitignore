@@ -19,4 +19,4 @@
 /config/facebook.yml
 /config/secrets.yml
 /config/email.yml
-/public/system/messages/images
+/public/system/messages

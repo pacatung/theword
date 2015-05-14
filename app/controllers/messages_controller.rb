@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = Message.new(multi_file_types_params)
     @message.user = current_user
     if params["commit"] == "草稿" || @message.receivers.first == nil
       @message.status = "draft"
@@ -71,11 +71,27 @@ class MessagesController < ApplicationController
   def message_params
     params[:message][:contact_ids] = Array(params[:message][:contact_ids]).uniq
 
-    params.require(:message).permit( :content, :delivery_date, :user_id, :status, :image, :audio, :video, :contact_ids => [])
+    params.require(:message).permit(:content, :delivery_date, :user_id, :status, :image, :audio, :video, :contact_ids => [])
   end
 
   def set_my_message
     @message = current_user.messages.find(params[:id])
+  end
+
+  def multi_file_types_params
+
+    params[:message][:contact_ids] = Array(params[:message][:contact_ids]).uniq
+
+    if params[:message][:foo].content_type.include? 'image'
+      params[:message][:image] = params[:message][:foo]
+    elsif params[:message][:foo].content_type.include? 'video'
+      params[:message][:video] = params[:message][:foo]
+    elsif params[:message][:foo].content_type.include? 'audio'
+      params[:message][:audio] = params[:message][:foo]
+    end
+
+    params[:message].delete :foo
+    params.require(:message).permit(:content, :delivery_date, :user_id, :status, :image, :audio, :video, :contact_ids => [])
   end
 
 end
