@@ -6,9 +6,10 @@
 
 /* html */
 body{
-  background-color: #f5faff;
+  background-color: #FFF2EB;
   padding-top: 70px;
 }
+
 .draft-style{
   background-color: #fbb;
   text-align: center;
@@ -16,6 +17,7 @@ body{
   width: 10%;
 }
 .sign_in_page{
+
   margin-top: -20px;
   background: image-url("sign_in_family3.jpg") no-repeat center center;
   background-size: cover;
@@ -30,6 +32,7 @@ body{
   /*vertical-align: middle;*/
   /*background-color:#fff ;*/
   margin-top: 100px;
+  color: #7F7F7F;
 }
 .fb-signin{
   /*left: 170px;*/
@@ -45,9 +48,8 @@ textarea{
 footer{
   text-align: center;
 }
-.mge-content-info{
-  /*background-color: #d1ffff;*/
-}
+
+
 /* class */
 .message-input-area{
   min-height: 50px;
@@ -57,6 +59,10 @@ footer{
 }
 .receivers-s2{
   padding: 0px;
+  width: 70%;
+}
+.receiver-add{
+  width: 28%;
 }
 .message-new, .mge-show{
   padding: 10px;
@@ -92,21 +98,11 @@ footer{
 }
 .receiver-name {
   display: inline-block;
-  border: 1px #4dffff solid;
+  border: 1px #ccc solid;
   border-radius: 3px;
-  background-color: #4dffff;
-  padding: 0px 5px;
+  background-color: #f0f0f0;
 }
-.mge-show-id:nth-of-type(odd){
-  background-color: #ffff99;
-  border-left-width: 50px;
-  border-left-color: #ffff99;
-}
-.mge-show-id:nth-of-type(even){
-  background-color: #ff0000;
-  border-left-width: 50px;
-  border-left-color: #ff0000;
-}
+
 /* other */
 
 /*
