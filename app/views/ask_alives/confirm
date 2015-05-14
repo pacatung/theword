@@ -1,0 +1,2 @@
+謝謝你告訴我們 <%= @ask.user.name %> 他目前 <%= @ask.status %>
+我們已將他的狀態設定成<%= @ask.user.status %>
