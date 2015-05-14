@@ -254,7 +254,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass
-  byebug
+  byebug (= 4.0.3)
   capistrano-passenger
   capistrano-rails
   codeclimate-test-reporter
