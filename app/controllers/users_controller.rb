@@ -7,7 +7,11 @@ before_action :authenticate_user!
 
   def update
     if current_user.update(set_user)
-      redirect_to messages_path
+      if params[:from] == "signup"
+        redirect_to new_contact_path
+      else
+        redirect_to messages_path
+      end
     else
       redirect_to :back
     end
