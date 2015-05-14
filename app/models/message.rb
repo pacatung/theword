@@ -24,7 +24,6 @@ class Message < ActiveRecord::Base
 
   def draft_or_final
     if self.status == "final" && self.receivers.empty?
-      #self.update_column( :status, "draft" )
       self.status = "draft"
     end
   end

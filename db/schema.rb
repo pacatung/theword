@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20150513091704) do
 
+  create_table "ask_alives", force: :cascade do |t|
+    t.integer  "contact_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.string   "token",      limit: 255
+    t.string   "status",     limit: 255, default: "pending", null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string   "name",                     limit: 255,                null: false
     t.string   "phone",                    limit: 255,                null: false
@@ -61,12 +70,12 @@ ActiveRecord::Schema.define(version: 20150513091704) do
   add_index "receivers", ["message_id"], name: "index_receivers_on_message_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",     null: false
-    t.string   "encrypted_password",     limit: 255, default: "",     null: false
+    t.string   "email",                  limit: 255,   default: "",     null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",     null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,      null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -80,8 +89,8 @@ ActiveRecord::Schema.define(version: 20150513091704) do
     t.string   "home_phone",             limit: 255
     t.string   "address",                limit: 255
     t.date     "active_date"
-    t.string   "status",                 limit: 255, default: "live", null: false
-    t.string   "fb_token",               limit: 255
+    t.string   "status",                 limit: 255,   default: "live", null: false
+    t.text     "fb_token",               limit: 65535
     t.datetime "fb_expires_at"
     t.string   "phone",                  limit: 255
   end

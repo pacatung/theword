@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 
   has_many :contacts, :dependent => :destroy
   has_many :messages, :dependent => :destroy
+  has_many :ask_alives
 
-  validates_inclusion_of :status, :in => ["live", "die", "sent"]
+  validates_inclusion_of :status, :in => ["alive", "dead", "sent"]
 
   def check_facebook!
     #conn = Faraday.new(:url => 'https://graph.facebook.com/me')
