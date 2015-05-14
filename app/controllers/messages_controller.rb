@@ -69,7 +69,7 @@ class MessagesController < ApplicationController
   def message_params
     params[:message][:contact_ids] = Array(params[:message][:contact_ids])
 
-    params.require(:message).permit( :content, :delivery_date, :user_id, :status, :image, :contact_ids => [])
+    params.require(:message).permit( :content, :delivery_date, :user_id, :status, :image, :audio, :video, :contact_ids => [])
   end
   def set_my_message
     @message = current_user.messages.find(params[:id])

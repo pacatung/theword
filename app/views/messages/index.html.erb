@@ -16,7 +16,7 @@
     <% @messages.each do |m| %>
 
       <!-- Message show -->
-      <div id="mge-<%= m.id %>" data-id="<%= m.id %>">
+      <div class="mge-show-id" id="mge-<%= m.id %>" data-id="<%= m.id %>">
         <%= render :partial => "show", :locals => { :m => m } %>
       </div>
       <!-- message edit -->
@@ -54,8 +54,6 @@
   </div>
 
 </div>
-
-
 
 <script>
   //$(".editmessage").first().closest(".mge-show").find(".mge-edit-form").toggle()

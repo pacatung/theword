@@ -26,6 +26,7 @@
     <% if m.image_file_name %>
       <%= image_tag m.image.url(:medium) %>
     <% end %>
+    <%#= audio_tag m.audio.url %>
     <p><%=simple_format m.content %></p>
   </div>
 </div>

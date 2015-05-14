@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511101920) do
+ActiveRecord::Schema.define(version: 20150513091704) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",                     limit: 255,                null: false
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20150511101920) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.string   "audio_file_name",    limit: 255
+    t.string   "audio_content_type", limit: 255
+    t.integer  "audio_file_size",    limit: 4
+    t.datetime "audio_updated_at"
+    t.string   "video_file_name",    limit: 255
+    t.string   "video_content_type", limit: 255
+    t.integer  "video_file_size",    limit: 4
+    t.datetime "video_updated_at"
   end
 
   create_table "receivers", force: :cascade do |t|
