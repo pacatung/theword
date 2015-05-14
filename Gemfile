@@ -33,12 +33,9 @@ gem 'bootstrap-sass'
 gem 'omniauth-facebook'
 gem "select2-rails"
 
-
-# gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-datepicker-rails'
 
 gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails'
-
 
 #deploy
 group :development do
@@ -57,7 +54,7 @@ end
 
 group :development, :test do
   gem 'faker'
-
+  gem "rspec-rails"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

@@ -3,9 +3,12 @@ class MessagesController < ApplicationController
   before_action :set_my_message, :only => [:edit, :update, :destroy]
 
   def index
-    @messages = current_user.messages.order("id DESC")
+    @messages = current_user.messages.includes( :receivers => :contact ).order("id DESC")
     @message = Message.new
-    @contacts = current_user.contacts.only_check_alive
+    @contacts = current_user.contacts.includes( :receivers ).only_check_alive
+
+    @all_contacts = current_user.contacts.includes(:receivers)
+
     @contact = Contact.new
   end
 
@@ -45,9 +48,9 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.update(message_params)
         format.html{ redirect_to root_url }
-        format.js{ render :template => "messages/index" }
+        format.js{ render :action => "index" }
       else
-        format.html { render :template => "messages/edit" }
+        format.html { render :action => "edit" }
         format.js
       end
     end
@@ -59,18 +62,18 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html{ redirect_to root_url }
-      format.js{ render :template => "messages/destroy" }
+      format.js
     end
-
   end
 
   private
 
   def message_params
-    params[:message][:contact_ids] = Array(params[:message][:contact_ids])
+    params[:message][:contact_ids] = Array(params[:message][:contact_ids]).uniq
 
     params.require(:message).permit( :content, :delivery_date, :user_id, :status, :image, :audio, :video, :contact_ids => [])
   end
+
   def set_my_message
     @message = current_user.messages.find(params[:id])
   end

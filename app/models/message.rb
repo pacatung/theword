@@ -10,11 +10,11 @@ class Message < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   has_attached_file :audio
-  validates_attachment_content_type :audio, :content_type => /.*/
+  validates_attachment_content_type :audio, :content_type => /\Aaudio\/.*\Z/
 
 
   has_attached_file :video
-  validates_attachment_content_type :video, :content_type => /.*/
+  validates_attachment_content_type :video, :content_type => /\Avideo\/.*\Z/
 
   def create_message_notify
     UserMailer.notify_comment(self.user, self).deliver_later!

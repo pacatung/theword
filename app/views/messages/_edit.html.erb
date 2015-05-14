@@ -2,7 +2,7 @@
   <legend>修改遺言</legend>
   <%= form_for message, :url => message_path(message) do |m| %>
 
-    <%= select_tag "message[contact_ids]", grouped_options_for_select(options_for_receiver(current_user), m.object.contact_ids ), :multiple => true, :class=> "receivers-select receivers-s2", :placeholder => "收訊人: 媽媽" %>
+    <%= select_tag "message[contact_ids]", grouped_options_for_select(options_for_receiver(@all_contacts), m.object.contact_ids ), :multiple => true, :class=> "receivers-select receivers-s2", :placeholder => "收訊人: 媽媽" %>
     <button type="button" class="btn btn-default receiver-add" data-toggle="modal" data-target="#myModal" data-tooltip="hello world">新增收訊人</button>
 
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, :value=> message.content %>
@@ -14,7 +14,7 @@
     指定傳送日期：
 
     <div class='input-group date'>
-      <%= m.text_field :delivery_date, :class => 'form-control datepicker',default: DateTime.current, id:"datetimepicker1"%>
+      <%= m.text_field :delivery_date, :class => 'form-control datepicker',default: DateTime.current %>
       <span class="input-group-addon look-outline-red">
           <span class="glyphicon glyphicon-calendar"></span>
       </span>
@@ -25,17 +25,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  $(function () {
-      $('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD hh:mm a'
-      });
-  });
-
-  $('.datepicker').datepicker({
-     format: "yyyy/mm/dd"
-  });
-
-  $(".receivers-select").select2();
-</script>

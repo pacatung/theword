@@ -12,6 +12,16 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :status, :in => ["alive", "dead", "sent"]
 
+  def send_theword
+    self.messages.where( :status => "final").each do |m|
+      m.receivers.each do |r|
+        UserMailer.send_theword(m,r).deliver_now!
+      end
+    end
+    self.status = "sent"
+    self.save
+  end
+
   def check_facebook!
     #conn = Faraday.new(:url => 'https://graph.facebook.com/me')
     #response1 = conn.get "/me", { :access_token => self.fb_token }
