@@ -87,6 +87,14 @@ footer{
   padding-top: 10px;
   padding-left: 40px;
 }
+.message-new{
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #eee;
+  border-left: 5px solid #488677;
+}
 .bg-pic{
   /*background-color: #d1ffff;*/
   background: image-url("brownribbon.png") no-repeat center;
@@ -100,7 +108,6 @@ footer{
   padding-left: 20px;
 }
 .title-bg{
-  color: #fff;
   background: image-url("red.png") no-repeat center;
   background-size: 600px 800px;
   height: 90px;
@@ -124,6 +131,29 @@ footer{
   border: 2px solid #eee;
   border-left: 5px solid #ce4844;
 }
+.contact-bg{
+  background: image-url("darkredribbon.png") no-repeat center;
+  background-size: 650px 800px;
+  height: 90px;
+}
+.contact-bg-title{
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #fff;
+  font-size:30px
+}
+.receiver-bg{
+  background: image-url("darkredribbon.png") no-repeat center;
+  background-size: 650px 800px;
+  height: 90px;
+}
+.contact-bg-title{
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #fff;
+  font-size:30px
+}
+
 /* class */
 .message-input-area{
   min-height: 50px;
@@ -156,12 +186,13 @@ footer{
 .contact-list,
 .receiver-list
 {
-  background-color: #fff;
-  box-shadow: 1px 1px 1px 1px #c0c0c0;
-  border-radius: 5px;
+  padding: 10px;
   margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #eee;
+  border-left: 5px solid #7E3A46;
 }
-
 .outline-show-red{
   outline:1px solid #FF0000;
 }
@@ -187,6 +218,14 @@ footer{
 /* other */
 
 /*
+.contact-list,
+.receiver-list
+{
+  background-color: #fff;
+  box-shadow: 1px 1px 1px 1px #c0c0c0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 .mge-show-id:nth-of-type(odd){
   background-color: #ffff99;
   border-left-width: 50px;

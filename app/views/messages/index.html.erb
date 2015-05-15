@@ -26,7 +26,7 @@
 
       <!-- Message show -->
       <div class="bg-pic">
-      <div class="bg-text1">
+        <div class="bg-text1">
             <div class="pull-right">
               <%= m.created_at.to_s(:short) %>
               <!-- Single button -->
@@ -59,26 +59,39 @@
   </div>
 
   <!-- Receiver List -->
-  <div class="col-md-3 receiver-list">
-    <legend class="text-center">收訊人</legend>
-      <p>您目前留了遺言給以下對象</p>
-      <ul>
-        <% @contacts.each do |c| %>
-          <p><%= c.name if c.receivers.first %></p>
-        <% end %>
-      </ul>
+  <div class="col-md-3 ">
+    <div class="receiver-bg">
+      <div class="receiver-bg-title">
+
+      </div>
+    </div>
+    <div class="receiver-list">
+      <legend class="text-center">收訊人</legend>
+        <p>您目前留了遺言給以下對象</p>
+        <ul>
+          <% @contacts.each do |c| %>
+            <p><%= c.name if c.receivers.first %></p>
+          <% end %>
+        </ul>
+    </div>
   </div>
 
   <!-- Contact List -->
-  <div class="col-md-3 contact-list">
-    <legend class="text-center">聯絡人</legend>
-      <p>當我們無法與您聯繫時，將聯絡以下對象</p>
-      <% @contacts.each do |c| %>
-        <%= link_to c.name, c, :class => "col-md-10" %>
-        <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
-      <% end %>
+  <div class="col-md-3">
+    <div class="contact-bg">
+      <div class="contact-bg-title">
+        聯絡人
+      </div>
+    </div>
+    <div class="contact-list">
+    <p>當我們無法與您聯繫時，將聯絡以下對象</p>
+    <% @contacts.each do |c| %>
+      <%= link_to c.name, c, :class => "col-md-10" %>
+      <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
+    <% end %>
 
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
+    </div>
   </div>
   <!-- FB Page -->
   <div id="fb-root" class="theword-sample col-md-3">
