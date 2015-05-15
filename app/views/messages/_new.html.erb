@@ -9,13 +9,7 @@
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
     <br>
     <div class="form-group">
-      上傳檔案：<%= m.file_field :foo, class: 'inline-block' %>
-      <% if false %>
-      上傳照片：<%= m.file_field :image, class: 'inline-block' %>
-      <%#= check_box_tag "destroy_photo", "1" %> 刪除檔案
-      上傳聲音：<%= m.file_field :audio, class: 'inline-block' %>
-      上傳影片：<%= m.file_field :video, class: 'inline-block' %>
-      <% end %>
+      上傳檔案：可上傳照片及影音檔案<%= m.file_field :foo, class: 'inline-block' %>
     </div>
     指定傳送日期：
 
