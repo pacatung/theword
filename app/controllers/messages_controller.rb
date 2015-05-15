@@ -54,7 +54,6 @@ class MessagesController < ApplicationController
         format.js
       end
     end
-
   end
 
   def destroy
@@ -82,12 +81,14 @@ class MessagesController < ApplicationController
 
     params[:message][:contact_ids] = Array(params[:message][:contact_ids]).uniq
 
-    if params[:message][:foo].content_type.include? 'image'
-      params[:message][:image] = params[:message][:foo]
-    elsif params[:message][:foo].content_type.include? 'video'
-      params[:message][:video] = params[:message][:foo]
-    elsif params[:message][:foo].content_type.include? 'audio'
-      params[:message][:audio] = params[:message][:foo]
+    if params[:message][:foo]
+      if params[:message][:foo].content_type.include? 'image'
+        params[:message][:image] = params[:message][:foo]
+      elsif params[:message][:foo].content_type.include? 'video'
+        params[:message][:video] = params[:message][:foo]
+      elsif params[:message][:foo].content_type.include? 'audio'
+        params[:message][:audio] = params[:message][:foo]
+      end
     end
 
     params[:message].delete :foo

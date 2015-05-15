@@ -1,4 +1,6 @@
 <div class="col-md-6 col-md-push-3">
+  <h3 align="center">請詳實填寫您的個人資料</h3>
+  <h3 align="center">若無法聯絡到你，我們將詢問您的聯絡人</h3>
   <%= form_for @user, :url => update_profile_path do |f|%>
 
   <%= hidden_field_tag "from", params[:from] %>

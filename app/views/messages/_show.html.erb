@@ -2,7 +2,7 @@
 <div class="mge-show">
   <p class="draft-style"><%= "草稿" if m.status == "draft" %></p>
   <div class="pull-right">
-    <%= m.created_at.to_s(:short) %>
+    <%= m.created_at.advance(:hours=>8).to_s(:short) %>
     <!-- Single button -->
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -21,7 +21,6 @@
       <% m.contacts.each_with_index do |contact, index| %>
         <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
       <% end %>
-
       <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
       <legend></legend>
     </div>

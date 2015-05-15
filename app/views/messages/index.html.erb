@@ -30,17 +30,17 @@
   <div class="col-md-3 receiver-list">
     <legend class="text-center">收訊人</legend>
       <p>您目前留了遺言給以下對象</p>
-      <ul>
+      <div class="col-md-10">
         <% @contacts.each do |c| %>
-          <p><%= c.name if c.receivers.first %></p>
+          <%= c.name if c.receivers.first %> <br>
         <% end %>
-      </ul>
+      </div>
   </div>
 
   <!-- Contact List -->
   <div class="col-md-3 contact-list">
     <legend class="text-center">聯絡人</legend>
-      <p>當我們無法與您聯繫時，將聯絡以下對象</p>
+      <p>當我們無法聯繫到你時，將聯絡以下對象</p>
       <% @contacts.each do |c| %>
         <%= link_to c.name, c, :class => "col-md-10" %>
         <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
