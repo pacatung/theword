@@ -1,6 +1,6 @@
 
 <div class="mge-show">
-  <p class="draft-style"><%= "草稿" if m.status == "draft" %></p>
+  <div class="draft-style"><%= "草稿" if m.status == "draft" %></div>
   <div class="pull-right">
     <%= m.created_at.to_s(:short) %>
     <!-- Single button -->
@@ -14,10 +14,10 @@
       </ul>
     </div>
   </div>
-  <div class="mge-content">
+
+
     <div class="mge-content-info">
       給：
-
       <% m.contacts.each_with_index do |contact, index| %>
         <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
       <% end %>
@@ -25,6 +25,9 @@
       <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
       <legend></legend>
     </div>
+
+  <div class="mge-content">
+
     <% if m.image_file_name %>
       <%= image_tag m.image.url(:medium) %>
     <% end %>

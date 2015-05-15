@@ -16,6 +16,14 @@
     <% @messages.each do |m| %>
 
       <!-- Message show -->
+      <div class="bg-pic">
+        給：
+        <% m.contacts.each_with_index do |contact, index| %>
+        <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
+        <% end %>
+        <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
+      </div>
+
       <div class="mge-show-id" id="mge-<%= m.id %>" data-id="<%= m.id %>">
         <%= render :partial => "show", :locals => { :m => m } %>
       </div>
