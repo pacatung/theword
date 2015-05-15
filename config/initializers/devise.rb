@@ -9,7 +9,7 @@ Devise.setup do |config|
   # FB ID & Secret
   fb_config = YAML.load(File.read("#{Rails.root}/config/facebook.yml"))[Rails.env]
 
-  config.omniauth :facebook, fb_config['app_id'] , fb_config['secret'], :scope => 'email, user_photos, read_stream'
+  config.omniauth :facebook, ENV['fb_app_id'] , ENV['fb_secret'], :scope => 'email, user_photos, read_stream'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

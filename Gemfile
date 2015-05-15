@@ -37,6 +37,8 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'momentjs-rails'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'dotenv-rails'
+
 
 #deploy
 group :development do
