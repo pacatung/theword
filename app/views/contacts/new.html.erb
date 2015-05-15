@@ -1,12 +1,13 @@
-<h3 align="center">聯絡人是我們確認發送狀態的一環</h3>
-<h3 align="center">若聯絡不上您，我們將聯絡您所設定的對象</h3>
 
-<div class="col-md-6 col-md-push-3">
-    <%= form_for @contact do |f|%>
 
-      <%= render :partial => "form", :locals => { :f => f, :contact => @contact } %>
+<div class="col-md-4 col-md-push-4">
 
-      <%= f.submit "新增聯絡人資料", :class => "btn btn-default" %>
+
+  <%= form_for @contact do |f|%>
+
+    <%= render :partial => "form", :locals => { :f => f, :contact => @contact } %>
+
+    <%= f.submit "新增聯絡人資料", :class => "btn btn-default" %>
 
   <% end %>
 </div>
