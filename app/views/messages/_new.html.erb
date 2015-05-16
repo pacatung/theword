@@ -3,18 +3,18 @@
 
     <%= select_tag "message[contact_ids]", grouped_options_for_select(options_for_receiver(@all_contacts)), :multiple => true, :class=> "receivers-select receivers-s2", :placeholder => "收訊人: 媽媽" %>
 
-    <button type="button" class="btn btn-default receiver-add" data-toggle="modal" data-target="#myModal" data-tooltip="hello world">新增收訊人</button>
+    <button type="button" class="btn btn-primary receiver-add" data-toggle="modal" data-target="#myModal" data-tooltip="hello world">＋ 新增收訊人</button>
     <%= m.text_area :content, :class=> "form-control message-input-area", :rows => 5, placeholder: :"媽, 謝謝妳給我這一生,我愛妳 ^^" %>
     <br>
     <div class="form-group">
-      上傳檔案：可上傳照片及影音檔案<%= m.file_field :foo, class: 'inline-block' %>
+      可上傳照片及影音檔案<%= m.file_field :foo, class: 'inline-block' %>
     </div>
     指定傳送日期：
 
     <div class='input-group date'>
       <%= m.text_field :delivery_date, :class => 'form-control datepicker',default: DateTime.current %>
       <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
       </span>
     </div>
     <div class="pull-right">

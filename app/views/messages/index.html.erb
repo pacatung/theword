@@ -11,9 +11,18 @@
         <p>給親愛的媽媽:</p>
         <p>  這是我在前往亞馬遜河探險前所寫下的，當妳看到這封訊息時，表示我已經不在了... 兒子不孝，沒能好好奉養妳，還讓妳傷心。但此行是我一大心願，雖然危險卻非去不可，能長眠於此，也是我最好的歸宿了~!!</p>
       <legend></legend>
+        <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
         <%= image_tag "sky_theword.jpg", :class=> "theword_sample" %>
+        </a>
+        <!-- javascript -->
+          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <%= image_tag "sky_theword.jpg", :class=> "theword_sample" %>
+              </div>
+            </div>
+          </div>
       </div>
-
     </div>
 
   <div class="col-md-6">
@@ -31,19 +40,19 @@
       <!-- Message show -->
       <div class="bg-pic">
         <div class="bg-text1">
-            <div class="pull-right">
-              <%= m.created_at.to_s(:short) %>
-              <!-- Single button -->
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#" class="editmessage" data-id="<%= m.id %>">修改遺言</a></li>
-                  <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
-                </ul>
-              </div>
+          <div class="pull-right">
+            <%= m.created_at.to_s(:short) %>
+            <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="editmessage" data-id="<%= m.id %>">修改遺言</a></li>
+                <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
+              </ul>
             </div>
+          </div>
           給：
           <% m.contacts.each_with_index do |contact, index| %>
           <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
