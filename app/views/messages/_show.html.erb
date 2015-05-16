@@ -1,6 +1,33 @@
 
 <div class="mge-show">
-    <div class="mge-content">
+
+      <div class="bg-pic">
+        <div class="bg-text1">
+          <div class="pull-right">
+            <%= m.created_at.to_s(:short) %>
+            <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+              </button>
+              <div class="draft-style"><%= "草稿" if m.status == "draft" %></div>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="editmessage" data-id="<%= m.id %>">修改遺言</a></li>
+                <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
+              </ul>
+            </div>
+          </div>
+          給：
+          <% m.contacts.each_with_index do |contact, index| %>
+          <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
+          <% end %>
+          <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
+        </div>
+      </div>
+
+
+
+  <div class="mge-content">
 
     <% if m.image_file_name %>
       <%= image_tag m.image.url(:medium) %>
