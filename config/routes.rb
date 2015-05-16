@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   get "/ask_alives" => "ask_alives#confirm", :as => "ask_alive"
 
+  get "/admin" => "ask_alives#ask_admin", :as => "admin"
+  get "/admin/check_facebook" => "ask_alives#check_facebook", :as => "check_facebook"
+  get "/admin/send_theword" => "ask_alives#send_theword", :as => "send_theword"
+  get "/admin/send_ask_mail" => "ask_alives#send_ask_mail", :as => "send_ask_mail"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

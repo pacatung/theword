@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <div class="row">
+    <h2><%= link_to "FB 爬蟲", :check_facebook %></h2>
+    <h2><%= link_to "Email 詢問",:send_ask_mail %></h2>
+    <h2><%= link_to "送出遺言", :send_theword %></h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th><h2>Name</h2></th>
+        <th><h2>最近活動時間</h2></th>
+        <th><h2>狀態</h2></th>
+      </tr>
+
+      <% @users.each do |u| %>
+      <tr>
+        <td><h2><%= u.name %></h2></td>
+        <td><h2><%= u.active_date %></h2></td>
+        <td><h2><%= u.status %></h2></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
