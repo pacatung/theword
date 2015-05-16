@@ -1,7 +1,5 @@
 <div class="message-new mge-show clearfix">
   <%= form_for @message, :url => messages_path do |m| %>
-    <legend class="text-center">新增一則遺言</legend>
-
 
     <%= select_tag "message[contact_ids]", grouped_options_for_select(options_for_receiver(@all_contacts)), :multiple => true, :class=> "receivers-select receivers-s2", :placeholder => "收訊人: 媽媽" %>
 

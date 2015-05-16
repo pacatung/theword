@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   has_many :ask_alives
 
-  validates_inclusion_of :status, :in => ["alive", "dead", "sent"]
+  #validates_inclusion_of :status, :in => ["alive", "dead", "sent"]
 
   def send_theword
     self.messages.where( :status => "final").each do |m|

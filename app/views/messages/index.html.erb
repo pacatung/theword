@@ -1,24 +1,57 @@
 <div class="container">
 
   <!-- 遺言範例 -->
-
     <div class="theword-sample col-md-3">
-      <legend class="text-center">看看遺言範例</legend>
-      <p>給親愛的媽媽:</p>
-      <p>  這是我在前往亞馬遜河探險前所寫下的，當妳看到這封訊息時，表示我已經不在了... 兒子不孝，沒能好好奉養妳，還讓妳傷心。但此行是我一大心願，雖然危險卻非去不可，能長眠於此，也是我最好的歸宿了~!!</p>
+
+      <div class="title-bg">
+        <div class="title-content">看看遺言範例
+        </div>
+      </div>
+      <div class="example-content text-center">
+        <p>給親愛的媽媽:</p>
+        <p>  這是我在前往亞馬遜河探險前所寫下的，當妳看到這封訊息時，表示我已經不在了... 兒子不孝，沒能好好奉養妳，還讓妳傷心。但此行是我一大心願，雖然危險卻非去不可，能長眠於此，也是我最好的歸宿了~!!</p>
       <legend></legend>
-      <%= image_tag "sky_theword.jpg", :class=> "theword_sample" %>
-      <!-- image-url("sign_in_family3.jpg") -->
+        <%= image_tag "sky_theword.jpg", :class=> "theword_sample" %>
+      </div>
+
     </div>
 
   <div class="col-md-6">
     <!-- Message new -->
+    <div class="new-message-bg">
+      <div class="title-content">
+        新增一則遺言
+      </div>
+    </div>
     <%= render :partial => "new", :locals => { :message => @message } %>
     <p></p>
 
     <% @messages.each do |m| %>
 
       <!-- Message show -->
+      <div class="bg-pic">
+        <div class="bg-text1">
+            <div class="pull-right">
+              <%= m.created_at.to_s(:short) %>
+              <!-- Single button -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" class="editmessage" data-id="<%= m.id %>">修改遺言</a></li>
+                  <li><%= link_to '刪除遺言', message_path(m), :data =>{:confirm => "確定要刪除這則遺言?"}, :method => :delete, :remote => true %></li>
+                </ul>
+              </div>
+            </div>
+          給：
+          <% m.contacts.each_with_index do |contact, index| %>
+          <li class="receiver-name receiver-<%= index %>"><%= contact.name %></li>
+          <% end %>
+          <p>指定傳送日期: <%= m.delivery_date.to_s %></p>
+        </div>
+      </div>
+
       <div class="mge-show-id" id="mge-<%= m.id %>" data-id="<%= m.id %>">
         <%= render :partial => "show", :locals => { :m => m } %>
       </div>
@@ -30,26 +63,39 @@
   </div>
 
   <!-- Receiver List -->
-  <div class="col-md-3 receiver-list">
-    <legend class="text-center">收訊人</legend>
-      <p>您目前留了遺言給以下對象</p>
-      <div class="col-md-10">
-        <% @contacts.each do |c| %>
-          <%= c.name if c.receivers.first %> <br>
-        <% end %>
+
+  <div class="col-md-3 ">
+    <div class="receiver-bg">
+      <div class="receiver-bg-title title-content">
+        收訊人
       </div>
+    </div>
+    <div class="receiver-list">
+      <p>您目前留了遺言給以下對象</p>
+      <ul>
+        <% @contacts.each do |c| %>
+          <p><%= c.name if c.receivers.first %></p>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <!-- Contact List -->
-  <div class="col-md-3 contact-list">
-    <legend class="text-center">聯絡人</legend>
-      <p>當我們無法聯繫到你時，將聯絡以下對象</p>
-      <% @contacts.each do |c| %>
-        <%= link_to c.name, c, :class => "col-md-10" %>
-        <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
-      <% end %>
+  <div class="col-md-3">
+    <div class="contact-bg">
+      <div class="title-content">
+        聯絡人
+      </div>
+    </div>
+    <div class="contact-list">
+    <p>當我們無法與您聯繫時，將聯絡以下對象</p>
+    <% @contacts.each do |c| %>
+      <%= link_to c.name, c, :class => "col-md-10" %>
+      <%= link_to "x", c, :method => :delete, :data =>{:confirm => "確定要刪除此收訊人?"} , :class => "col-md-2 contact-delete" %>
+    <% end %>
 
     <%= link_to '+', new_contact_path, :class => 'btn btn-default btn-add-contact' %>
+    </div>
   </div>
   <!-- FB Page -->
   <div id="fb-root" class="theword-sample col-md-3">
