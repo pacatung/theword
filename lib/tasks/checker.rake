@@ -15,7 +15,7 @@ namespace :checker do
   end
 
   task :send_theword => :environment do
-    User.where( :status => "dead"). find_each do |u|
+    User.where( :status => "dead").find_each do |u|
       u.send_theword!
     end
   end
